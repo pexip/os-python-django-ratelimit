@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+cp -r test_settings.py ${AUTOPKGTEST_TMP}
+cd ${AUTOPKGTEST_TMP}
+for p in $(py3versions -s); do
+    $p -m pytest --pyargs django_ratelimit.tests --ds=test_settings
+done

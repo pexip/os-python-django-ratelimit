@@ -1,0 +1,9 @@
+Document: python-django-ratelimit-doc
+Title: django-ratelimit Documentation
+Author: James Socol <me@jamessocol.com>
+Section: Programming/Python
+
+Format: HTML
+Index: /usr/share/doc/python-django-ratelimit-doc/html/index.html
+Files: /usr/share/doc/python-django-ratelimit-doc/html/*.html
+       /usr/share/doc/python-django-ratelimit-doc/html/cookbook/*.html

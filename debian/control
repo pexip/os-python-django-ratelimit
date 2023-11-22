@@ -1,0 +1,52 @@
+Source: python-django-ratelimit
+Section: python
+Priority: optional
+Maintainer: Debian Python Team <team+python@tracker.debian.org>
+Uploaders:
+ Michael Fladischer <fladi@debian.org>,
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-sequence-python3,
+ pybuild-plugin-pyproject,
+ python3-all,
+ python3-django,
+ python3-pymemcache,
+ python3-pytest,
+ python3-pytest-django,
+ python3-setuptools,
+ python3-sphinx,
+Standards-Version: 4.6.2
+Homepage: https://github.com/jsocol/django-ratelimit
+Vcs-Browser: https://salsa.debian.org/python-team/packages/python-django-ratelimit
+Vcs-Git: https://salsa.debian.org/python-team/packages/python-django-ratelimit.git
+Rules-Requires-Root: no
+
+Package: python-django-ratelimit-doc
+Section: doc
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${sphinxdoc:Depends},
+Description: Cache-based rate-limiting for Django (Documentation)
+ Django Ratelimit is a ratelimiting decorator for Django views, storing rate
+ data in the configured Django cache backend. It requires a Django cache backend
+ that supports atomic increment operations. The Memcached and Redis backends do,
+ but the database backend does not.
+ .
+ This package contains the documentation.
+
+Package: python3-django-ratelimit
+Architecture: all
+Depends:
+ python3-django,
+ ${misc:Depends},
+ ${python3:Depends},
+Suggests:
+ python-django-ratelimit-doc,
+Description: Cache-based rate-limiting for Django (Python3 version)
+ Django Ratelimit is a ratelimiting decorator for Django views, storing rate
+ data in the configured Django cache backend. It requires a Django cache backend
+ that supports atomic increment operations. The Memcached and Redis backends do,
+ but the database backend does not.
+ .
+ This package contains the Python 3 version of the library.

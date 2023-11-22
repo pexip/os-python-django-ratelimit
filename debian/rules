@@ -1,0 +1,18 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export PYBUILD_NAME=django-ratelimit
+export PYBUILD_TEST_ARGS=--pyargs django_ratelimit.tests --ds=test_settings
+
+%:
+	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
+
+execute_before_dh_sphinxdoc:
+ifeq (,$(findstring nodoc, $(DEB_BUILD_OPTIONS)))
+	PYTHONPATH=$(CURDIR) python3 -m sphinx -b html -d $(CURDIR)/docs/.build/.doctrees -N $(CURDIR)/docs $(CURDIR)/debian/python-django-ratelimit-doc/usr/share/doc/python-django-ratelimit-doc/html
+endif
+
+execute_after_dh_clean:
+	rm -rf $(CURDIR)/docs/.build

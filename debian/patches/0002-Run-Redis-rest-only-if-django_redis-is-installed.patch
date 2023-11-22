@@ -1,0 +1,74 @@
+From: Michael Fladischer <FladischerMichael@fladi.at>
+Date: Wed, 22 Nov 2023 16:43:05 +0000
+Subject: Run Redis rest only if django_redis is installed.
+
+---
+ django_ratelimit/tests.py |  7 +++++++
+ test_settings.py          | 20 +++++++++++++-------
+ 2 files changed, 20 insertions(+), 7 deletions(-)
+
+diff --git a/django_ratelimit/tests.py b/django_ratelimit/tests.py
+index a58c89e..a5d826a 100644
+--- a/django_ratelimit/tests.py
++++ b/django_ratelimit/tests.py
+@@ -12,6 +12,12 @@ from django_ratelimit.exceptions import Ratelimited
+ from django_ratelimit.core import (get_usage, is_ratelimited,
+                                    _split_rate, _get_ip)
+ 
++from unittest import skipIf
++try:
++    import django_redis
++except ImportError:
++    django_redis = False
++
+ 
+ rf = RequestFactory()
+ 
+@@ -601,6 +607,7 @@ class CacheFailTests(TestCase):
+         assert do_increment(rf.get('/'))
+         assert do_increment(rf.get('/'))
+ 
++    @skipIf(not django_redis, "django_redis is not installed")
+     @override_settings(RATELIMIT_USE_CACHE='connection-errors-redis')
+     def test_is_ratelimited_cache_connection_error_with_increment_redis(self):
+         def do_increment(request):
+diff --git a/test_settings.py b/test_settings.py
+index 0245d39..81488f7 100644
+--- a/test_settings.py
++++ b/test_settings.py
+@@ -1,3 +1,8 @@
++try:
++    import django_redis
++except ImportError:
++    django_redis = False
++
+ SECRET_KEY = 'ratelimit'
+ 
+ SILENCED_SYSTEM_CHECKS = ['django_ratelimit.E003', 'django_ratelimit.W001']
+@@ -17,18 +22,19 @@ CACHES = {
+         'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
+         'LOCATION': 'test-connection-errors',
+     },
+-    'connection-errors-redis': {
+-        'BACKEND': 'django_redis.cache.RedisCache',
+-        'LOCATION': 'redis://test-connection-errors',
+-        'OPTIONS': {
+-            'IGNORE_EXCEPTIONS': True,
+-        }
+-    },
+     'instant-expiration': {
+         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+         'LOCATION': 'test-instant-expiration',
+     },
+ }
++if django_redis:
++    CACHES['connection-errors-redis'] = {
++        'BACKEND': 'django_redis.cache.RedisCache',
++        'LOCATION': 'redis://test-connection-errors',
++        'OPTIONS': {
++            'IGNORE_EXCEPTIONS': True,
++        }
++    }
+ 
+ DATABASES = {
+     'default': {

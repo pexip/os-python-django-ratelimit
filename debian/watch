@@ -1,0 +1,4 @@
+version=4
+opts=filenamemangle=s/.*\/v([\d\.]+.*)$/python-django-ratelimit-$1/ \
+https://github.com/jsocol/django-ratelimit/tags \
+/jsocol/django-ratelimit/archive/refs/tags/v([\d\.]+)\.tar\.gz

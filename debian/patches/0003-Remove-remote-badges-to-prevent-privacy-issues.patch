@@ -1,0 +1,22 @@
+From: Michael Fladischer <FladischerMichael@fladi.at>
+Date: Wed, 22 Nov 2023 20:58:01 +0000
+Subject: Remove remote badges to prevent privacy issues.
+
+---
+ docs/index.rst | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/docs/index.rst b/docs/index.rst
+index b92433b..5aaac76 100644
+--- a/docs/index.rst
++++ b/docs/index.rst
+@@ -9,9 +9,6 @@ Project
+ storing rate data in the configured `Django cache backend
+ <https://docs.djangoproject.com/en/dev/topics/cache/>`__.
+ 
+-.. image:: https://travis-ci.org/jsocol/django-ratelimit.png?branch=master
+-   :target: https://travis-ci.org/jsocol/django-ratelimit
+-
+ :Code:          https://github.com/jsocol/django-ratelimit
+ :License:       Apache Software License
+ :Issues:        https://github.com/jsocol/django-ratelimit/issues

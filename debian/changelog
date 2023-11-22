@@ -1,0 +1,5 @@
+python-django-ratelimit (4.1.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #1056545).
+
+ -- Michael Fladischer <fladi@debian.org>  Wed, 22 Nov 2023 16:10:34 +0000

@@ -1,0 +1,3 @@
+0001-Fix-duplicate-entries-in-tox.ini.patch
+0002-Run-Redis-rest-only-if-django_redis-is-installed.patch
+0003-Remove-remote-badges-to-prevent-privacy-issues.patch
