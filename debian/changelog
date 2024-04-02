@@ -1,3 +1,9 @@
+python-django-ratelimit (4.1.0-1+pexip24u1) pexip; urgency=medium
+
+  * Prepare Pexip packaging
+
+ -- Mark Hymers <mark.hymers@pexip.com>  Tue, 02 Apr 2024 11:35:44 +0000
+
 python-django-ratelimit (4.1.0-1) unstable; urgency=low
 
   * Initial release (Closes: #1056545).
