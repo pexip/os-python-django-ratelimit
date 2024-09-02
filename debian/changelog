@@ -1,3 +1,17 @@
+python-django-ratelimit (4.1.0-2+pexip24u1) pexip; urgency=medium
+
+  * New upstream release
+
+ -- Steve McIntyre <steve.mcintyre@pexip.com>  Mon, 02 Sep 2024 17:14:35 +0100
+
+python-django-ratelimit (4.1.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Source-only upload to allow testing migration.
+  * debian/control: Mark the doc package as M-A: foreign.
+
+ -- Boyuan Yang <byang@debian.org>  Mon, 12 Aug 2024 23:37:40 -0400
+
 python-django-ratelimit (4.1.0-1+pexip24u2) pexip; urgency=medium
 
   * Rebuild to move to main 

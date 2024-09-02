@@ -26,6 +26,7 @@ XS-Pexip-Upstream: http://deb.debian.org/debian/ unstable
 Package: python-django-ratelimit-doc
 Section: doc
 Architecture: all
+Multi-Arch: foreign
 Depends:
  ${misc:Depends},
  ${sphinxdoc:Depends},
