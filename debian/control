@@ -21,7 +21,7 @@ Homepage: https://github.com/jsocol/django-ratelimit
 Vcs-Browser: https://salsa.debian.org/python-team/packages/python-django-ratelimit
 Vcs-Git: https://salsa.debian.org/python-team/packages/python-django-ratelimit.git
 Rules-Requires-Root: no
-XS-Pexip-Upstream: http://deb.debian.org/debian/ unstable
+XS-Pexip-Upstream: http://deb.debian.org/debian/ trixie
 
 Package: python-django-ratelimit-doc
 Section: doc
